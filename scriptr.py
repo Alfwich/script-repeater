@@ -27,7 +27,7 @@ def main():
                     sys.stdout.write(">> " + formattedCommand + "\n" )
                     os.system(formattedCommand)
 
-            sys.stdout.write("|  Completed iteration: %d" % repeats)
+            sys.stdout.write("|  Completed iteration: %d\n" % repeats)
             repeats += 1
     else:
         print("Could not load command from file 'command.txt'!")
@@ -39,6 +39,11 @@ def formatCommandLine(rawCommand, repeats=0):
     return formattedCommand
 
 def attemptRepeaterCommand(command):
+    # NOOP for comments and empty commands
+    if len(command) == 0 or command[0] == "#":
+        return True
+
+    # Internal sleep command
     if "{{SLEEP}}" in command:
         sleepTime = float(command.split(":")[1])
         sys.stdout.write("|  Sleeping for %f seconds..." % sleepTime)

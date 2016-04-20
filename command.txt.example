@@ -1,0 +1,11 @@
+# Example command.txt which uses all of the special script repeater commands
+#{{SLEEP}}:<seconds_to_sleep>
+# This command will sleep the script 'seconds_to_sleep' rounded up to the closest second
+#{{TS}}
+# This will replace '{{TS}}' anywhere in the command with the current timestamp
+#{{#}}
+# This will replace '{{#}}' anywhere in the command with the current iteration of the script
+{{SLEEP}}:3
+echo "Hello world @ time = {{TS}}"
+{{SLEEP}}:1
+echo "We have repeated this {{#}} times!"
